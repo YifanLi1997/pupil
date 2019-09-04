@@ -1,3 +1,5 @@
+#define _ENABLE_EXTENDED_ALIGNED_STORAGE
+
 """
 (*)~---------------------------------------------------------------------------
 Pupil - eye tracking platform
@@ -149,13 +151,13 @@ cdef class Detector_3D:
 
             if visualize:
                 # !! uncomment this to visualize coarse detection
-                #  # draw the candidates
-                # for v  in bad_ones:
-                #     p_x,p_y,w,response = v
-                #     x = p_x * scale + roi_x
-                #     y = p_y * scale + roi_y
-                #     width = w*scale
-                #     cv2.rectangle( frame.img , (x,y) , (x+width , y+width) , (0,0,255)  )
+                  # draw the candidates
+                for v  in bad_ones:
+                    p_x,p_y,w,response = v
+                    x = p_x * scale + roi_x
+                    y = p_y * scale + roi_y
+                    width = w*scale
+                    cv2.rectangle( frame.img , (x,y) , (x+width , y+width) , (0,0,255)  )
 
                 # # draw the candidates
                 for v  in good_ones:

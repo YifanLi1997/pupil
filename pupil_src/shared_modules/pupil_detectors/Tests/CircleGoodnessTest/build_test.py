@@ -12,4 +12,4 @@ See COPYING and COPYING.LESSER for license details.
 if __name__ == '__main__':
     import subprocess as sp
     sp.call("python setup_test.py build_ext --inplace",shell=True)
-print "BUILD COMPLETE ______________________"
+print("BUILD COMPLETE ______________________")

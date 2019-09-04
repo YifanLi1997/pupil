@@ -17,14 +17,16 @@ if __name__ == '__main__':
   loc = ospath.abspath(__file__).rsplit('pupil_src', 1)
   syspath.append(ospath.join(loc[0], 'pupil_src', 'shared_modules'))
   syspath.append(ospath.join(loc[0], 'pupil_src', 'capture', 'pupil_detectors'))
+  syspath.append("C:\\work\\pupil\\pupil_src\\shared_modules\\pupil_detectors")  #yf
+  print(syspath)
   del syspath, ospath
 
   from collections import namedtuple
   import detector_2d
-  from canny_detector import Canny_Detector
+  #from canny_detector import Canny_Detector
   from methods import Roi
   import cv2
-  from video_capture import autoCreateCapture, CameraCaptureError,EndofVideoFileError
+  #from video_capture import autoCreateCapture, CameraCaptureError,EndofVideoFileError
   import time
   from file_methods import save_object, load_object
   import shutil
@@ -42,7 +44,7 @@ if __name__ == '__main__':
   try:
       frame = cap.get_frame()
   except CameraCaptureError:
-      print "Could not retrieve image from capture"
+      print("Could not retrieve image from capture")
       cap.close()
 
   Pool = namedtuple('Pool', 'user_dir');
@@ -88,12 +90,12 @@ if __name__ == '__main__':
         if first[key] != second[key]:
             diff[key] = (first[key], second[key])
 
-    if diff: print diff
+    if diff: print(diff)
 
   def compare_contours(first,second ):
     for x,y in zip(first,second):
         for a,b in zip(x,y):
-            if a[0] != b[0] or a[1] != b[1]: print "Different contours"
+            if a[0] != b[0] or a[1] != b[1]: print("Different contours")
 
   def write_test_values_py():
     global test_file_Folder
@@ -111,10 +113,10 @@ if __name__ == '__main__':
             frame = cap.get_frame()
             frameNumber += 1
         except CameraCaptureError:
-            print "Capture from Camera Failed. Stopping."
+            print("Capture from Camera Failed. Stopping.")
             break
         except EndofVideoFileError:
-            print "Video File is done."
+            print("Video File is done.")
             break
         # send to detector
         result = detector_py.detect(frame,user_roi=u_r,visualize=False)
@@ -122,9 +124,9 @@ if __name__ == '__main__':
         #save test values
         save_object( result, test_file_Folder + 'result_frame_py{}'.format(frameNumber))
 
-        print "Frame {}".format(frameNumber)
+        print("Frame {}".format(frameNumber))
 
-    print "Finished writing test files py."
+    print("Finished writing test files py.")
 
   def write_test_values_cpp():
 
@@ -143,10 +145,10 @@ if __name__ == '__main__':
             frame = cap.get_frame()
             frameNumber += 1
         except CameraCaptureError:
-            print  "Capture from Camera Failed. Stopping."
+            print("Capture from Camera Failed. Stopping.")
             break
         except EndofVideoFileError:
-            print "Video File is done."
+            print("Video File is done.")
             break
         # send to detector
         result_cpp = detector_cpp.detect(frame, u_r,  visualize=False   )
@@ -154,9 +156,9 @@ if __name__ == '__main__':
         #save test values
         save_object( result_cpp, test_file_Folder + 'result_frame_cpp{}'.format(frameNumber))
 
-        print "Frame {}".format(frameNumber)
+        print("Frame {}".format(frameNumber))
 
-    print "Finished writing test files cpp."
+    print("Finished writing test files cpp.")
 
   def compare_test_cpp():
     global test_file_Folder
@@ -170,10 +172,10 @@ if __name__ == '__main__':
             frame = cap.get_frame()
             frameNumber += 1
         except CameraCaptureError:
-            print "Capture from Camera Failed. Stopping."
+            print("Capture from Camera Failed. Stopping.")
             break
         except EndofVideoFileError:
-            print "Video File is done."
+            print("Video File is done.")
             break
         # send to detector
         result = detector_cpp.detect(frame, u_r,  visualize=False  )
@@ -186,9 +188,9 @@ if __name__ == '__main__':
         compare_dict(reference_result, result )
         #compare_contours( contours, reference_contours)
 
-        print "Frame {}".format(frameNumber)
+        print("Frame {}".format(frameNumber))
 
-    print "Finished compare test cpp."
+    print("Finished compare test cpp.")
 
   def compare_test_py():
 
@@ -202,10 +204,10 @@ if __name__ == '__main__':
             frame = cap.get_frame()
             frameNumber += 1
         except CameraCaptureError:
-            print "Capture from Camera Failed. Stopping."
+            print("Capture from Camera Failed. Stopping.")
             break
         except EndofVideoFileError:
-            print "Video File is done."
+            print("Video File is done.")
             break
         # send to detector
         result = detector_py.detect(frame,user_roi=u_r,visualize=False)
@@ -215,9 +217,9 @@ if __name__ == '__main__':
 
         compare_dict(reference_result, result )
 
-        print "Frame {}".format(frameNumber)
+        print("Frame {}".format(frameNumber))
 
-    print "Finished compare test py."
+    print("Finished compare test py.")
 
 
   def compare_cpp_and_py():
@@ -232,10 +234,10 @@ if __name__ == '__main__':
             frame = cap.get_frame()
             frameNumber += 1
         except CameraCaptureError:
-            print "Capture from Camera Failed. Stopping."
+            print("Capture from Camera Failed. Stopping.")
             break
         except EndofVideoFileError:
-            print"Video File is done."
+            print("Video File is done.")
             break
 
         frame.gray # call this here, so the conversion to gray image is not happening during timing of cpp detector
@@ -255,14 +257,14 @@ if __name__ == '__main__':
 
         if( 'center' in result_cpp.keys() and 'center' in result_py.keys() ):
           if not compareEllipse( result_cpp, result_py):
-              print "Wrong Ellipse: cpp: {},{},{},{}  py: {},{},{},{}".format( result_cpp['center'],result_cpp['major'],result_cpp['minor'],result_cpp['angle'],  result_py['center'], result_py['major'], result_py['minor'], result_py['angle']);
+              print("Wrong Ellipse: cpp: {},{},{},{}  py: {},{},{},{}".format( result_cpp['center'],result_cpp['major'],result_cpp['minor'],result_cpp['angle'],  result_py['center'], result_py['major'], result_py['minor'], result_py['angle']));
         #compare_dict(reference_result, result )
         #compare_contours( contours, reference_contours)
 
-        print "Frame {}".format(frameNumber)
+        print("Frame {}".format(frameNumber))
 
-    print "Finished comparing."
-    print "Timing: cpp_time_average: {} , py_time_average: {}".format(cpp_time/frameNumber, py_time/frameNumber)
+    print("Finished comparing.")
+    print("Timing: cpp_time_average: {} , py_time_average: {}".format(cpp_time/frameNumber, py_time/frameNumber))
 
 
 

@@ -8,7 +8,7 @@ Lesser General Public License (LGPL v3.0).
 See COPYING and COPYING.LESSER for license details.
 ---------------------------------------------------------------------------~(*)
 """
-
+import cv2
 import time
 import logging
 import uvc
@@ -131,6 +131,7 @@ class UVC_Source(Base_Source):
                 self.exposure_time_backup = None
 
         self.backup_uvc_controls = {}
+
 
     def verify_drivers(self):
         import os

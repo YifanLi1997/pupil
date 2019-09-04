@@ -8,7 +8,7 @@ Lesser General Public License (LGPL v3.0).
 See COPYING and COPYING.LESSER for license details.
 ---------------------------------------------------------------------------~(*)
 """
-
+import copy
 import os
 import platform
 from types import SimpleNamespace
@@ -701,10 +701,18 @@ def eye(
                 if g_pool.writer:
                     g_pool.writer.write_video_frame(frame)
 
+                ##########################################
+                img = frame.img
+                cv2.imwrite('frame.png', img)
+
+                ##########################################
+
                 # pupil ellipse detection
                 result = g_pool.pupil_detector.detect(
                     frame, g_pool.u_r, g_pool.display_mode == "algorithm"
                 )
+
+
                 if result is not None:
                     result["id"] = eye_id
                     result["topic"] = "pupil.{}".format(eye_id)

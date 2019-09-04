@@ -36,7 +36,7 @@ import sys , os
  # Make all pupil shared_modules available to this Python session.
 pupil_base_dir = os.path.abspath(__file__).rsplit('pupil_detectors', 1)[0] + 'pupil_detectors'
 pupil_test_dir = os.path.abspath(__file__).rsplit('CircleGoodnessTest', 1)[0]
-print pupil_test_dir
+print(pupil_test_dir)
 include_path = [  pupil_base_dir,pupil_test_dir ]
 
 shared_cpp_include_path = '../../shared_cpp/include'

@@ -1,0 +1,16 @@
+calibration:
+	eye camera:
+		location: 44.285, -27.945, 29.246 cm
+		rotation: 119, -53.1, -50.9 cm
+	scene camera:
+		location: -16.219cm, -3.3512mm, 1.0828m
+		rotation: -100, 180, 0
+
+
+after slippage:
+	eye camera:
+		location: 46.526, -27.312, 28.48
+		rotation: 120, -52.1, -54.7
+	scene camera:
+		location: -16.041cm, 2.8016mm, 1.0841m
+		rotation: -99.5, 178, -0.9

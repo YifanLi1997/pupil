@@ -1,3 +1,5 @@
+#define _ENABLE_EXTENDED_ALIGNED_STORAGE
+
 """
 (*)~---------------------------------------------------------------------------
 Pupil - eye tracking platform

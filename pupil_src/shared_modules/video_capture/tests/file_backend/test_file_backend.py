@@ -1,10 +1,20 @@
+import os
+import sys
+
+#file_dir = os.path.dirname(__file__)
+#sys.path.append(file_dir)
+sys.path.append("C:\\work\\pupil\\pupil_src\\shared_modules\\video_capture\\tests")
+sys.path.append("C:\\work\\pupil\\pupil_src\\shared_modules")
+print(sys.path)
+
 import logging
 from multiprocessing import cpu_count
 from types import SimpleNamespace
 
 import pytest
-
 import av
+
+
 from common import broken_data, multiple_data, single_data
 from video_capture.base_backend import NoMoreVideoError
 from video_capture.file_backend import Decoder, File_Source, OnDemandDecoder
@@ -71,3 +81,6 @@ def test_get_streams(single_fill_gaps, caplog):
     assert isinstance(stream[0], Decoder)
     stream = single_fill_gaps._get_streams(single_fill_gaps.container, False)
     assert isinstance(stream[0], OnDemandDecoder)
+
+
+test_file_source_recent_events()

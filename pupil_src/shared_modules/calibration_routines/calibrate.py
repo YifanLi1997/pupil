@@ -30,6 +30,7 @@ def calibrate_2d_polynomial(
     if binocular:
         model_n = 13
 
+    #print(cal_pt_cloud)
     cal_pt_cloud = np.array(cal_pt_cloud)
 
     cx, cy, err_x, err_y = fit_poly_surface(cal_pt_cloud, model_n)

@@ -1,0 +1,18 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\pupil_src",
+    "\\pupil_src\\launchables",
+    "\\pupil_src\\shared_cpp\\include",
+    "\\pupil_src\\shared_modules",
+    "\\pupil_src\\shared_modules\\pupil_detectors",
+    "\\pupil_src\\shared_modules\\video_capture",
+    "\\pupil_src\\tests",
+    "\\pupil_src\\tests\\yifan",
+    "\\pupil_src\\tests\\yifan\\pupil_result",
+    "\\pupil_src\\tests\\yifan\\pupil_result\\gaze_mapping",
+    "\\pupil_src\\tests\\yifan\\pupil_result\\pupil_detection"
+  ],
+  "SelectedNode": "\\pupil_src\\tests\\yifan\\analyse.py",
+  "PreviewInSolutionExplorer": false
+}
