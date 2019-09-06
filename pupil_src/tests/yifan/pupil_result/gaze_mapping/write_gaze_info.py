@@ -35,6 +35,7 @@ for dataset in datasets:
 
         #info = str(frame_number) + "," + str(eye_dummy_cal) + "," + str(eye_gt_monocular_cal) + "," + str(eye_monocular_cal) + "," + str(pupil_dummy_cal) + "," + str(pupil_gt_monocular_cal) + "," + str(pupil_monocular_cal) + "\n"
         info = str(frame_number) + "," + str(PG) + "," + str(PP) + "," + str(GG) + "," + str(GP) + "\n"
+        #info = str(frame_number) + "," + str(PP*) + "," + str(PP) + "," + str(P*P*) + "," + str(P*P) + "\n"
         f.write(info)
 
     f.close()
